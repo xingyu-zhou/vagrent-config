@@ -6,8 +6,12 @@ Vagrant.configure(2) do |config|
   config.vm.hostname = "buildServer"
   config.vm.network :private_network, ip: "192.168.100.200"
   config.vm.synced_folder ".", "/home/vagrant/sync", disabled: true
+  config.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+      v.cpus = 2
+  end
+  config.disksize.size = "50GB"
   config.vm.provision "shell", inline: $script
-  config.disksize.size = '50GB'
 end
 
 $script = <<SCRIPT
