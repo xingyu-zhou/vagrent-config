@@ -1,7 +1,6 @@
 #!/bin/bash
-vagrant plugin install vagrant-disksize
+bash ./install-plugin.sh
 vagrant up
-echo 'git config --global user.email "xingyu.zznou@gmail.com"' | vagrant ssh
-echo 'git config --global user.name "joa"' | vagrant ssh
-echo 'git clone https://github.com/xingyu-zhou/ansible-playbook-sample.git && cd ansible-playbook-sample && ansible-playbook -i development site.yml --diff' | vagrant ssh
-echo 'sudo cat /var/lib/jenkins/secrets/initialAdminPassword' | vagrant ssh
+cat ./init.sh | vagrant ssh
+sleep 10s
+echo "sudo cat /var/lib/jenkins/secrets/initialAdminPassword" | vagrant ssh
